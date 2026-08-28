@@ -1,5 +1,7 @@
 # Playwright + TypeScript — Page Object Model Example
 
+Update Readme from your_github_actions
+
 > A minimal, beginner-friendly POM starter that powers my YouTube series  
 > **“Learn QA Automation with Playwright Typescript”**.
 > https://www.youtube.com/watch?v=Gxn0i76jIJI&list=PLfw_nI4u_6WOuClIHl4Wl5V--ufJGin71
@@ -35,7 +37,7 @@ git checkout v0-baseline
 │  ├─ CheckboxesPage.ts    # reusable-locator example
 │  ├─ LoginPage.ts         # inline-locator example
 │  ├─ ManagePage.ts        # lazy POM factory
-│  └─ SecurePage.ts        
+│  └─ SecurePage.ts
 ├─ tests/
 │  ├─ checkboxes.spec.ts
 │  └─ login.spec.ts
@@ -48,21 +50,21 @@ git checkout v0-baseline
 
 ## 🗺️ Course checkpoints
 
-| Stage | Git tag                     | Branch               |
-|-------|-----------------------------|----------------------|
-| 0 Baseline POM           | `v0-baseline` | `lesson/00-baseline` |
-| 1 Fixtures (coming)      | _TBD_         | `lesson/01-fixtures` |
-| 2 GitHub Actions (coming)| _TBD_         | `lesson/02-ci`       |
+| Stage                     | Git tag       | Branch               |
+| ------------------------- | ------------- | -------------------- |
+| 0 Baseline POM            | `v0-baseline` | `lesson/00-baseline` |
+| 1 Fixtures (coming)       | _TBD_         | `lesson/01-fixtures` |
+| 2 GitHub Actions (coming) | _TBD_         | `lesson/02-ci`       |
 
 ---
 
 ## 👀 TypeScript visibility cheatsheet
 
-| Keyword      | Accessible from…                              | Typical use                   |
-|--------------|-----------------------------------------------|-------------------------------|
-| `public`     | Everywhere (`page.method()` in tests, etc.)   | **Business actions** (`login()`, `addToCart()`) |
-| `protected`  | Class itself **and subclasses**               | **Low-level helpers** (`basePageFill`, `basePageClick`) |
-| `private`    | Declaring class only                          | Internal state you never expose |
+| Keyword     | Accessible from…                            | Typical use                                             |
+| ----------- | ------------------------------------------- | ------------------------------------------------------- |
+| `public`    | Everywhere (`page.method()` in tests, etc.) | **Business actions** (`login()`, `addToCart()`)         |
+| `protected` | Class itself **and subclasses**             | **Low-level helpers** (`basePageFill`, `basePageClick`) |
+| `private`   | Declaring class only                        | Internal state you never expose                         |
 
 ### Example
 
@@ -75,8 +77,8 @@ abstract class BasePage {
 
 class LoginPage extends BasePage {
   async login(username: string, password: string) {
-    await this.basePageFill('#username', username);
-    await this.basePageFill('#password', password);
+    await this.basePageFill("#username", username);
+    await this.basePageFill("#password", password);
   }
 }
 
@@ -86,19 +88,19 @@ class LoginPage extends BasePage {
 
 ### Why keep helpers `protected`?
 
-1. **Encapsulation** – tests talk in *business language* (`login`, `open`) rather than raw clicks.
+1. **Encapsulation** – tests talk in _business language_ (`login`, `open`) rather than raw clicks.
 2. **Refactor-safety** – change the helper once; no tests break.
 3. **Cleaner API** – page objects decide what to expose publicly.
 
 > Need to call a helper from a test?  
-> You *can* make it `public`, but you’ll leak low-level details and lose the abstraction that keeps tests readable.
+> You _can_ make it `public`, but you’ll leak low-level details and lose the abstraction that keeps tests readable.
 
 ---
 
 ### Prerequisites
 
-* **Node.js ≥ 18**
-* **Playwright** is already in `devDependencies`; no global install needed.
+- **Node.js ≥ 18**
+- **Playwright** is already in `devDependencies`; no global install needed.
 
 ---
 
